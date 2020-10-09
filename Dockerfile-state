@@ -1,0 +1,5 @@
+FROM store/oracle/serverjre:1.8.0_241-b07
+WORKDIR /stream-state
+COPY ./target/real-time-*.jar ./stream-state.jar
+COPY ./src/main/resources/storage-stream.yml ./storage-stream.yml
+CMD ["java", "-jar", "stream-state.jar","stream", "storage-stream.yml"]

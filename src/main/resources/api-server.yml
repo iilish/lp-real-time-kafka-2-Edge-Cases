@@ -1,0 +1,35 @@
+--- #Battery Energy REST configuration file
+#  docker exec -it <<container name>> bash
+#
+#  docker run --name manning-postgres -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:12.2
+#Kafka brokers configuration
+# kafka-topics --list --bootstrap-server localhost:29092
+# kafka-topics --create --bootstrap-server localhost:29092 --replication-factor 1 --partitions 3 --topic canonical-topic
+# kafka-topics --create --bootstrap-server localhost:29092 --replication-factor 1 --partitions 3 --topic energyTransformedTopic
+# kafka-console-consumer --bootstrap-server localhost:29092 \
+#    --topic energyTopic \
+#    --from-beginning \
+#    --formatter kafka.tools.DefaultMessageFormatter \
+#    --property print.key=true \
+#    --property print.value=true \
+#    --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
+#    --property value.deserializer=io.confluent.kafka.serializers.KafkaAvroDeserializerConfig
+#
+#  kafka-console-consumer --bootstrap-server localhost:29092 --topic energyTransformedTopic --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property print.value=true
+kafka:
+  bootstrap.servers: ${KAFKA_SERVERS_URL:-localhost:29092}
+  schema.registry.url: ${SCHEMA_REGISTRY_URL:-http://localhost:8090}
+
+topic: ${SOURCE_TOPIC:-sourceTopic}
+deviceTable: ${DEVICE_TABLE:-devices}
+
+s3-key: ${S3_KEY:-myKey}
+s3-secret: ${S3_SECRET:-mySecret}
+size-threshold: ${MSG_SIZE_THRESHOLD:-24000}
+
+database:
+  driverClass: org.postgresql.Driver
+  user: postgres
+  password: secret
+  url: ${DB_JDBC_URL:-jdbc:postgresql://localhost:5432/postgres}
+

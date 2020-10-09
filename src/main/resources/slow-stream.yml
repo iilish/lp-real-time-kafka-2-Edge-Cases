@@ -1,0 +1,11 @@
+applicationId: "slow-to-canonical-application"
+kafka:
+  bootstrap-servers: ${KAFKA_SERVERS_URL:-localhost:29092}
+  schema-registry-url: ${SCHEMA_REGISTRY_URL:-http://localhost:8090}
+
+source: ${SOURCE_TOPIC:-slow-topic}
+canonical: ${CANONICAL_TOPIC:-canonical-topic}
+dead: ${DEAD_TOPIC:-dead-topic}
+
+s3-key: ${S3_KEY:-myKey}
+s3-secret: ${S3_SECRET:-mySecret}

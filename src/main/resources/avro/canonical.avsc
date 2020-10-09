@@ -1,0 +1,48 @@
+[
+  {
+    "namespace": "manning.devices.raw.m1",
+    "type": "record",
+    "name": "DeviceRecord",
+    "fields": [
+      {
+       "name": "uuid",
+       "type": "string"
+      },
+      {
+       "name": "charging",
+       "type": "int"
+      },
+      {
+       "name": "chargingSource",
+       "type": ["null", "string"]
+      },
+      {
+       "name": "currentCapacity",
+       "type": ["null", "int" ]
+      },
+      {
+       "name": "inverterState",
+       "type": ["null",  "int"]
+      },
+      {
+       "name": "soCRegulator",
+       "type": ["null", "double"]
+      }
+    ]
+  },
+  {
+    "namespace": "manning.devices.raw.m1",
+    "type": "record",
+    "name": "CanonicalRecord",
+    "fields": [
+      {
+        "name": "arrival_time_ms",
+         "type": ["null", "long"]
+      },
+      {
+        "name": "body",
+        "type": "DeviceRecord"
+      }
+    ]
+  }
+]

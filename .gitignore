@@ -1,0 +1,9 @@
+
+
+.idea/
+*.iml
+
+target/
+
+#/src/main/java/com/manning/energy/battery/generated/*.java
+

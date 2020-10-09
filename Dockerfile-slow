@@ -1,0 +1,5 @@
+FROM store/oracle/serverjre:1.8.0_241-b07
+WORKDIR /stream-slow
+COPY ./target/real-time-*.jar ./stream-slow.jar
+COPY ./src/main/resources/slow-stream.yml ./slow-stream.yml
+CMD ["java", "-jar", "stream-slow.jar","slow", "slow-stream.yml"]

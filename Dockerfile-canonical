@@ -1,0 +1,5 @@
+FROM store/oracle/serverjre:1.8.0_241-b07
+WORKDIR /stream-canonical
+COPY ./target/real-time-*.jar ./stream-canonical.jar
+COPY ./src/main/resources/canonical-stream.yml ./canonical-stream.yml
+CMD ["java", "-jar", "stream-canonical.jar","canonical", "canonical-stream.yml"]
